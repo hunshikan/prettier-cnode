@@ -3,6 +3,7 @@
     <div class="subtitle">主题</div>
     <ul class="nav-list">
       <router-link
+        :class="currentTab === item.id ? 'selected' : ''"
         :key="item.id"
         :to="{name: 'home', params: {tab: item.id}}"
         v-for="item in navList"
@@ -26,7 +27,13 @@ export default {
   data() {
     return {
       navList: navConfig,
-      currentTab: '',
+      currentTab: this.$route.params.tab ? this.$route.params.tab : 'all'
+    }
+  },
+  watch: {
+    '$route.params.tab'(newValue, oldValue) {
+      if (!newValue) return
+      this.currentTab = newValue
     }
   }
 }

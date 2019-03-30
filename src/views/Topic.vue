@@ -1,5 +1,5 @@
 <template>
-  <div class="topic clearfix">
+  <div class="topic">
     <main>
       <Article :data="topicData" class="article"/>
       <ReplyList :data="replyData" class="reply-list"/>
@@ -53,31 +53,28 @@ export default {
 
 <style lang="scss" scoped>
 .topic {
-  padding-right: 300px;
-}
+  display: flex;
+  align-items: flex-start;
 
-main {
-  float: left;
-}
+  > main {
+    flex-grow: 1;
 
-.article,
-.reply-list {
-  margin: 0 2%;
-}
+    > .reply-list {
+      margin-top: 32px;
+    }
+  }
 
-.side-bar {
-  width: 300px;
-  height: 100%;
-  float: left;
-  margin-left: calc(-300px - 1%);
-  position: relative;
-  right: -300px;
-  margin-top: 40px;
-}
+  @media screen and (min-width: 768px) {
+    .side-bar {
+      display: block;
+      margin-left: 1%;
+    }
+  }
 
-.clearfix::after {
-  display: block;
-  content: '';
-  clear: both;
+  @media screen and (max-width: 768px) {
+    .side-bar {
+      display: none;
+    }
+  }
 }
 </style>

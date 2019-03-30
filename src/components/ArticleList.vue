@@ -30,7 +30,6 @@ import fetch from '../utils/fetch'
 import api from '../configs/apiConfig'
 import Avatar from '@/components/Avatar'
 import Pagination from '@/components/Pagination'
-
 import mixin from '@/mixins/index'
 
 export default {
@@ -39,7 +38,7 @@ export default {
     return {
       articleList: [],
       currentPage: 1,
-      currentTab: 'all'
+      currentTab: this.$route.params.tab ? this.$route.params.tab : 'all'
     }
   },
   components: {
@@ -63,6 +62,13 @@ export default {
   },
   created() {
     this.getArticleList()
+  },
+  watch: {
+    '$route.params.tab'(newValue, oldValue) {
+      if (!newValue) return
+      this.currentTab = newValue
+      this.getArticleList()
+    }
   },
   mixins: [mixin]
 }

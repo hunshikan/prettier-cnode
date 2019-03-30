@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     onMenuClick() {
-      this.sharedState.isShowNav = !this.sharedState.isShowNav
+      store.setNavShow(!this.sharedState.isShowNav)
     }
   }
 }

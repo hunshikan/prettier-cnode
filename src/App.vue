@@ -28,11 +28,11 @@ export default {
   created() {
     window.addEventListener('resize', e => {
       if (document.documentElement.clientWidth >= 768) {
-        this.sharedState.isShowNav = true
-        this.sharedState.isWideDevice = true
+        store.setNavShow(true)
+        store.setIsWideDevice(true)
       } else {
-        this.sharedState.isShowNav = false
-        this.sharedState.isWideDevice = false
+        store.setNavShow(false)
+        store.setIsWideDevice(false)
       }
     })
   },

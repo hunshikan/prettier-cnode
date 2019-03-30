@@ -79,7 +79,7 @@ export default {
 section {
   background-color: #fff;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  margin: 40px 2%;
+  margin: 0 2%;
 
   > .user-info {
     padding: 24px;
@@ -116,6 +116,7 @@ section {
 }
 .recent-topics,
 .recent-replies {
+  margin-top: 32px;
   > ul {
     > li > a {
       border-bottom: 1px solid #fafafa;

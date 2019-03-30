@@ -1,5 +1,5 @@
 <template>
-  <aside>
+  <aside v-if="userData">
     <section>
       <div class="sub-header">作者</div>
       <div class="user-info">
