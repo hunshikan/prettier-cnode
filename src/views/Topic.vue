@@ -68,6 +68,7 @@ export default {
     .side-bar {
       display: block;
       margin-left: 1%;
+      flex-shrink: 0;
     }
   }
 

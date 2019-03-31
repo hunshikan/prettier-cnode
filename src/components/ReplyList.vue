@@ -18,7 +18,7 @@
             <span>{{item.ups.length}}</span>
           </span>
         </div>
-        <div class="reply-content" id="content" v-html="item.content"></div>
+        <div class="reply-content markdown-body" v-html="item.content"></div>
       </li>
     </ul>
   </section>
@@ -39,8 +39,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('../assets/markdown.css');
-@import "../styles/Common.scss";
+@import url('../assets/github-markdown.css');
+@import '../styles/Common.scss';
 
 $trans-green: rgba(128, 189, 1, 0.02);
 
@@ -87,16 +87,14 @@ $trans-green: rgba(128, 189, 1, 0.02);
         padding-bottom: 8px !important;
         margin: 12px 24px 0 24px !important;
         border-bottom: 1px #f7f7f7 solid;
+        font-size: 14px;
+        word-break: break-all;
       }
 
       &:last-child {
         > .reply-content {
           border-bottom: none;
         }
-      }
-
-      > #content {
-        font-size: 14px;
       }
     }
 

@@ -9,7 +9,7 @@
         <span class="views">阅读量：{{data.visit_count}}</span>
       </div>
     </div>
-    <div class="article-content" id="content" v-html="data.content" v-if="data"></div>
+    <div class="article-content markdown-body" id="content" v-html="data.content" v-if="data"></div>
   </article>
 </template>
 
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('../assets/markdown.css');
+@import url('../assets/github-markdown.css');
 @import "../styles/Common.scss";
 
 $trans-blue: rgba(14, 131, 255, 0.1);
@@ -70,11 +70,10 @@ article {
   }
 
   > .article-content {
+    font-size: 15px;
     padding: 24px 24px 12px 24px;
+    word-break: break-all;
   }
 
-  > #content {
-    font-size: 15px;
-  }
 }
 </style>
