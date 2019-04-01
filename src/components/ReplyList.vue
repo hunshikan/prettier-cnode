@@ -54,10 +54,21 @@ $trans-green: rgba(128, 189, 1, 0.02);
       padding: 16px 0 0 0;
 
       > .reply-info {
-        margin: 0 24px;
         font-size: 12px;
         display: flex;
         align-items: center;
+
+        @media screen and (min-width: 768px) {
+          & {
+            margin: 0 $normal-padding;
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          & {
+            margin: 0 $min-padding;
+          }
+        }
 
         > .name {
           color: $blue;
@@ -89,6 +100,18 @@ $trans-green: rgba(128, 189, 1, 0.02);
         border-bottom: 1px #f7f7f7 solid;
         font-size: 14px;
         word-break: break-all;
+
+        @media screen and (min-width: 768px) {
+          & {
+            margin: 12px $normal-padding 0 $normal-padding !important;
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          & {
+            margin: 12px $min-padding 0 $min-padding !important;
+          }
+        }
       }
 
       &:last-child {

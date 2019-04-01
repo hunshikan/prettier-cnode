@@ -38,11 +38,11 @@ export default {
   },
   computed: {
     shouldShowNav() {
-      if(!this.sharedState.isWideDevice) {
+      if (!this.sharedState.isWideDevice) {
         return this.sharedState.isShowNav
       } else {
-        if(this.$route.name === 'home') {
-          return true;
+        if (this.$route.name === 'home') {
+          return true
         }
       }
     }
@@ -53,10 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(250, 250, 250);
+  
 
   > header {
     position: fixed;
@@ -67,6 +64,12 @@ export default {
 
   main {
     padding-top: 0.1px;
+
+    > .content {
+      margin: 0 2%;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -81,8 +84,6 @@ export default {
 
       > .content {
         flex-grow: 1;
-        margin: 0 2%;
-        margin-top: 40px;
       }
     }
   }
@@ -91,26 +92,20 @@ export default {
     main {
       margin-top: 42px;
 
-      .nav-bar {
+      > .nav-bar {
         position: fixed;
         top: 42px;
         width: 100%;
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.06);
       }
-
-      > .content {
-        flex-grow: 1;
-        margin: 0 2%;
-        margin-top: 40px;
-      }
     }
   }
 
   .slide-enter-active {
-    animation: slide-down 0.5s;
+    animation: slide-down 0.3s ease-in-out;
   }
   .slide-leave-active {
-    animation: slide-down 0.5s reverse;
+    animation: slide-down 0.3s reverse ease-in-out;
   }
 
   @keyframes slide-down {
@@ -122,10 +117,4 @@ export default {
     }
   }
 }
-
-ul {
-  margin: 0;
-}
-
-
 </style>

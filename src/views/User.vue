@@ -43,6 +43,7 @@ import Avatar from '@/components/Avatar'
 import mixin from '@/mixins/index'
 import fetch from '@/utils/fetch'
 import api from '../configs/apiConfig'
+import scrollTop from '../utils/scrollTop.js'
 
 export default {
   name: 'User',
@@ -67,6 +68,7 @@ export default {
   watch: {
     '$route.params.loginname'() {
       this.getUserData()
+      scrollTop(40)
     }
   },
   mixins: [mixin]
@@ -79,10 +81,10 @@ export default {
 section {
   background-color: #fff;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  margin: 0 2%;
 
   > .user-info {
     padding: 24px;
+    border-radius: 8px;
 
     > .avatar-and-name {
       > img {
@@ -117,12 +119,29 @@ section {
 .recent-topics,
 .recent-replies {
   margin-top: 32px;
+  border-radius: 8px;
   > ul {
     > li > a {
       border-bottom: 1px solid #fafafa;
       padding: 8px 24px;
       display: flex;
       align-items: center;
+
+      @media screen and (min-width: 768px) {
+        & {
+          padding: 8px $normal-padding;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        & {
+          padding: 8px $min-padding;
+
+          .date {
+            display: none;
+          }
+        }
+      }
 
       > .title {
         margin-left: 16px;

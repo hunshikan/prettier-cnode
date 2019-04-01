@@ -3,12 +3,26 @@ $dark-grey: #aaa;
 $light-grey: #ccc;
 $trans-green: rgba(128, 189, 1, 0.1);
 $green: rgb(128, 189, 1);
+$min-padding: 16px;
+$normal-padding: 24px;
 
 .sub-header {
   padding: 12px 24px;
   border-bottom: 1px #f7f7f7 solid;
   font-weight: bold;
   color: #222;
+}
+
+@media screen and (min-width: 768px) {
+  .sub-header {
+    padding: 12px $normal-padding;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sub-header {
+    padding: 12px $min-padding;
+  }
 }
 
 .tab {

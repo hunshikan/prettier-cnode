@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="articleList">
     <ul class="article-list">
       <li :key="item.id" class="article" v-for="item in articleList">
         <router-link :to="{name: 'topic', params: {id: item.id, name: item.author.loginname}}">
@@ -15,8 +15,10 @@
           </div>
           <div class="state-info">
             <span class="last-reply">最后回复：{{item.last_reply_at | formatDate}}</span>
-            <span class="replys">{{item.reply_count}} 回复</span>
-            <span class="views">{{item.visit_count}} 阅读量</span>
+            <span class="replies-and-views">
+              <span class="replies">{{item.reply_count}} 回复</span>
+              <span class="views">{{item.visit_count}} 阅读量</span>
+            </span>
           </div>
         </router-link>
       </li>
@@ -28,6 +30,7 @@
 <script>
 import fetch from '../utils/fetch'
 import api from '../configs/apiConfig'
+import scrollTop from '../utils/scrollTop.js'
 import Avatar from '@/components/Avatar'
 import Pagination from '@/components/Pagination'
 import mixin from '@/mixins/index'
@@ -36,7 +39,7 @@ export default {
   name: 'ArticleList',
   data() {
     return {
-      articleList: [],
+      articleList: null,
       currentPage: 1,
       currentTab: this.$route.params.tab ? this.$route.params.tab : 'all'
     }
@@ -58,6 +61,7 @@ export default {
     onPageUpdate(page) {
       this.currentPage = page
       this.getArticleList()
+      scrollTop(100)
     }
   },
   created() {
@@ -68,6 +72,7 @@ export default {
       if (!newValue) return
       this.currentTab = newValue
       this.getArticleList()
+      scrollTop(100)
     }
   },
   mixins: [mixin]
@@ -85,7 +90,6 @@ export default {
 
 .article {
   background-color: #fff;
-  padding: 24px 24px 0 24px;
   cursor: pointer;
   transition: all 0.2s;
 
@@ -105,6 +109,22 @@ export default {
 
   &:hover {
     background-color: #f5f5f5;
+  }
+
+  @media screen and (min-width: 768px) {
+    & {
+      padding: $normal-padding $normal-padding 0 $normal-padding;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      padding: $min-padding $min-padding 0 $min-padding;
+    }
+
+    .tab {
+      display: none;
+    }
   }
 
   .article-base-info {
@@ -146,6 +166,13 @@ export default {
     > .create-date {
       color: $light-grey;
     }
+
+    @media screen and (max-width: 768px) {
+      > .create-at,
+      .create-date {
+        display: none;
+      }
+    }
   }
 
   .state-info {
@@ -155,25 +182,45 @@ export default {
     align-items: center;
     padding-bottom: 16px;
     border-bottom: 1px #f7f7f7 solid;
+    position: relative;
 
     > .last-reply {
       font-weight: 400;
       color: $dark-grey;
     }
 
-    > .replys {
+    > .replies-and-views{
+      margin-left: auto;
+    }
+
+    .replies {
       border-radius: 6px;
       padding: 5px 10px;
       background-color: $trans-green;
       font-weight: bold;
       color: $green;
-      margin-left: auto;
     }
 
-    > .views {
+    .views {
       color: $dark-grey;
       margin-left: 16px;
       font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      & {
+        margin-top: 0;
+      }
+
+      > .last-reply {
+        display: none;
+      }
+
+      > .replies-and-views {
+        position: absolute;
+        top: calc(-100% - 8px);
+        right: 0;
+      }
     }
   }
 }

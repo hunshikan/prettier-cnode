@@ -29,7 +29,7 @@ export default {
 
 <style lang="scss" scoped>
 @import url('../assets/github-markdown.css');
-@import "../styles/Common.scss";
+@import '../styles/Common.scss';
 
 $trans-blue: rgba(14, 131, 255, 0.1);
 
@@ -39,7 +39,6 @@ article {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 
   > .article-info {
-    padding: 24px;
     border-bottom: 1px #f7f7f7 solid;
 
     > .title {
@@ -71,9 +70,25 @@ article {
 
   > .article-content {
     font-size: 15px;
-    padding: 24px 24px 12px 24px;
     word-break: break-all;
   }
 
+  @media screen and (min-width: 768px) {
+    > .article-info {
+      padding: $normal-padding;
+    }
+    > .article-content {
+      padding: $normal-padding $normal-padding 12px $normal-padding;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    > .article-info {
+      padding: $min-padding;
+    }
+    > .article-content {
+      padding: $min-padding $min-padding 12px $min-padding;
+    }
+  }
 }
 </style>
