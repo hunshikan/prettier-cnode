@@ -5,7 +5,7 @@ export default function(speed) {
     let top = document.documentElement.scrollTop
     if (top > 0) {
       document.documentElement.scrollTop -= speed
-      timer = requestAnimationFrame(fn)
+      timerId = requestAnimationFrame(fn)
     } else {
       cancelAnimationFrame(timerId)
     }
