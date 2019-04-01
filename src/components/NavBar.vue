@@ -46,6 +46,7 @@ export default {
     '$route.params.tab'(newValue, oldValue) {
       if (!newValue) return
       this.currentTab = newValue
+      store.setNavShow(false)
     }
   },
   mounted() {

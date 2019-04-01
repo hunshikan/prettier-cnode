@@ -61,7 +61,7 @@ export default {
     onPageUpdate(page) {
       this.currentPage = page
       this.getArticleList()
-      scrollTop(100)
+      scrollTop(120)
     }
   },
   created() {
