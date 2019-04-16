@@ -28,7 +28,7 @@ export default {
       if (c <= 5) {
         return [1, 2, 3, 4, 5, 6, 7, 8, '...']
       } else {
-        return [1, '...', c - 2, c - 1, c, c + 1, c + 2, c + 3, '...']
+        return [1, '..', c - 2, c - 1, c, c + 1, c + 2, c + 3, '...']
       }
     }
   },
@@ -41,7 +41,7 @@ export default {
           this.current > 1 ? this.current-- : 1
         }
       } else {
-        if (page !== '...' && page !== this.current) {
+        if (page !== '...' && page !== '..' && page !== this.current) {
           this.current = page
         } else {
           return

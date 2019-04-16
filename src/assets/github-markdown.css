@@ -703,7 +703,7 @@
     font-size: 100%;
     margin: 0;
     padding: 0;
-    white-space: pre;
+    white-space: pre-line;
     word-break: normal;
   }
   
